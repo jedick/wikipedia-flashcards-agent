@@ -132,8 +132,8 @@ Enjoy building! 🚀
 JMD notes:
 
 - I followed along with the Vanishing Gradients episode: https://www.youtube.com/watch?v=emzmk2YUu6w
-- `prompts/cursor_prompt.md` was derived from the dictation sequence in the video
-  - I asked Claude to clean up the vdeo subtitles and to prepare a prompt for Cursor
+- `prompts/cursor_prompt.md` was derived from the dictation sequence in the video subtitles
+  - I asked Claude to clean up the subtitles and to prepare a prompt for Cursor
 - There is also a gist with Eleanor's dictated instructions, which I did not use
   - https://gist.github.com/intellectronica/015f1f7ef4ec550512389ceb1974b2b1
   - *I would have used this, but I didn't watch far enough ahead in the video to know about it*
