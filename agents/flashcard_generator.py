@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 # Create the flashcard generator agent with structured output
 flashcard_generator_agent = Agent(
     'openai:gpt-4o',
-    result_type=FlashcardsResult,
+    output_type=FlashcardsResult,
     system_prompt="""You are a flashcard generator agent. Your task is to:
 1. Analyze the provided summary text
 2. Extract key facts, concepts, and information
@@ -55,7 +55,7 @@ Please create flashcards that cover the key concepts, facts, and information fro
 Each flashcard should have a clear question and a comprehensive answer."""
     )
     
-    flashcards_result = result.data
+    flashcards_result = result.output
     
     logger.info("Flashcard generation completed")
     logger.info(f"Generated {len(flashcards_result.flashcards)} flashcards")

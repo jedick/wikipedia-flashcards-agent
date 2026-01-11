@@ -4,7 +4,7 @@ import json
 import logging
 import wikipedia
 from pydantic_ai import Agent
-from pydantic_ai.tools import tool
+from pydantic_ai.tools import Tool
 
 from models.wikipedia import WikipediaArticle, WikipediaSearchResult
 
@@ -16,7 +16,7 @@ wikipedia.set_lang("en")
 wikipedia.set_rate_limiting(True)
 
 
-@tool
+@Tool
 def search_wikipedia_tool(query: str) -> str:
     """
     Search Wikipedia for articles and retrieve full content.
@@ -86,7 +86,7 @@ def search_wikipedia_tool(query: str) -> str:
 # Create the agent with structured output
 wikipedia_search_agent = Agent(
     'openai:gpt-4o',
-    result_type=WikipediaSearchResult,
+    output_type=WikipediaSearchResult,
     system_prompt="""You are a Wikipedia search agent. Your task is to:
 1. Use the search_wikipedia_tool to find relevant Wikipedia articles for the user's query
 2. The tool will search Wikipedia and retrieve 2-3 most relevant articles with their full content
@@ -117,8 +117,8 @@ async def search_wikipedia(query: str) -> WikipediaSearchResult:
         f"Search Wikipedia for articles about: {query}. Use the search_wikipedia_tool to retrieve the articles."
     )
     
-    logger.info(f"Wikipedia search completed. Retrieved {len(result.data.articles)} articles")
-    for article in result.data.articles:
+    logger.info(f"Wikipedia search completed. Retrieved {len(result.output.articles)} articles")
+    for article in result.output.articles:
         logger.info(f"  - {article.title} ({len(article.content)} characters)")
     
-    return result.data
+    return result.output

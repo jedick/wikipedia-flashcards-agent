@@ -52,7 +52,7 @@ Article content:
 Please provide a clear, educational summary that synthesizes this information."""
     )
     
-    summary = result.data
+    summary = result.output
     word_count = len(summary.split())
     
     logger.info(f"Summary generation completed")

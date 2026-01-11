@@ -1,11 +1,13 @@
 """Main entry point for the Wikipedia Flashcard Generator."""
+# Load environment variables FIRST, before any imports that might need them
+from dotenv import load_dotenv
+load_dotenv()
 
 import asyncio
 import logging
 import re
 import sys
 from pathlib import Path
-from dotenv import load_dotenv
 
 from agents.wikipedia_search import search_wikipedia
 from agents.summary import generate_summary
@@ -73,10 +75,6 @@ def save_flashcards_to_markdown(flashcards_result: FlashcardsResult, topic: str)
 
 async def main_async():
     """Main async function that orchestrates the agents."""
-    # Load environment variables
-    load_dotenv()
-    logger.info("Environment variables loaded")
-    
     # Get the topic from command line arguments
     # All trailing arguments are combined into the topic query
     if len(sys.argv) < 2:
