@@ -1,5 +1,8 @@
 # AI-Assisted Coding Workshop: Building with AI Coding Agents
 
+<details>
+<summary><strong>Original README</strong></summary>
+
 This is a hands-on workshop about **working with AI coding agents**. You'll learn how to plan and specify requirements, provide context, and build software interactively using AI coding tools.
 
 The project we'll build together is a **multi-agent system** that automatically creates flashcards from Wikipedia articles — but the real focus is on **learning to code with AI**.
@@ -127,15 +130,33 @@ You'll learn:
 
 Enjoy building! 🚀
 
+</details>
+
 ---
 
-JMD notes:
+## Usage instructions
+
+1. Install dependencies with `uv sync`
+2. Create a `.env` file with `OPENAI_API_KEY`
+3. Run with: `uv run flashcards "your topic"`
+
+## Jeff's building notes
 
 - I followed along with the Vanishing Gradients episode: https://www.youtube.com/watch?v=emzmk2YUu6w
-- `prompts/cursor_prompt.md` was derived from the dictation sequence in the video
-  - I asked Claude to clean up the vdeo subtitles and to prepare a prompt for Cursor
-- There is also a gist with Eleanor's dictated instructions, which I did not use
-  - https://gist.github.com/intellectronica/015f1f7ef4ec550512389ceb1974b2b1
-  - *I would have used this, but I didn't watch far enough ahead in the video to know about it*
-- I submitted `cursor_prompt.md` to Cursor (Plan mode, Auto agent)
+- Created `prompts/cursor_prompt.md` from the dictation sequence in the video
+  - I asked Claude to clean up the video subtitles and to prepare a prompt for Cursor
+  - There is also a gist with Eleanor's dictated instructions, which I did not use
+    - https://gist.github.com/intellectronica/015f1f7ef4ec550512389ceb1974b2b1
+    - *I would have used this, but I didn't watch far enough ahead in the video to know about it*
+- I submitted the text of `cursor_prompt.md` to Cursor
+  - The Cursor agent was set to Plan mode and Auto agent
+  - Didn't use GPT 5 becuase I'm on the free plan
 - After reviewing the plan I hit Build in Cursor
+  - This implemented the whole project, not step-by-step as in the video
+  - It took about ten minutes to finish
+  - At the end, I copied the usage instructions provided by Cursor to this README
+- Cursor didn't ask to commit the changes (is it looking at `AGENTS.md`?)
+  - After running `git commit` on the command line, I added Cursor as a coauthor as described here:
+    - https://forum.cursor.com/t/how-to-nicely-make-cursor-to-be-commit-co-author-on-github/115782
+- Iterated with Cursor to fix some bugs with packaging, env variables, parameter and attribute names
+- Successfully ran the program and created flashcards: see `examples` directory
